@@ -36,7 +36,6 @@ export default function Main() {
 		console.log(e)
 		setFormInputs({
 			...formInputs,
-      (checked) ?
 			[e.target.name]: e.target.value,
 		})
 	}

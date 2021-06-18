@@ -1,11 +1,13 @@
-import AnswersItem from "./AnswersItem";
+import AnswersItem from './AnswersItem'
 
-export default function AnswersList({ answersList }) {
-  return (
-    <ul>
-      {answersList.map((answerItem, i) => (
-        <AnswersItem answerItem={answerItem} key={i} />
-      ))}
-    </ul>
-  );
+function AnswersList({ answersList }) {
+	return (
+		<ul>
+			{answersList.map((answerItem, i) => (
+				<AnswersItem answerItem={answerItem} key={i} />
+			))}
+		</ul>
+	)
 }
+
+export default AnswersList
