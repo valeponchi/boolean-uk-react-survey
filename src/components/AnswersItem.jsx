@@ -6,7 +6,8 @@ function ItemsList({ list }) {
 			{list.map(item => (
 				<li>
 					{Object.keys(answersSet).includes(item)
-						? answersSet[item]
+						? //item is a string with one of the key of the objects
+						  answersSet[item]
 						: answersSetTwo[item]}
 				</li>
 			))}
@@ -44,9 +45,10 @@ export default function AnswersItem({
 		timeSpent,
 		review,
 	},
+	index,
 }) {
 	return (
-		<li>
+		<li key={index}>
 			<article className="answer">
 				<h3>{username || 'Anon'} said:</h3>
 				<p>

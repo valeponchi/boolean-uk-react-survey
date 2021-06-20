@@ -1,4 +1,22 @@
-function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
+const initialFormInput = {
+	username: '',
+	email: '',
+	bestFeatures: [],
+	worstFeatures: [],
+	consistency: '',
+	colour: '',
+	logo: '',
+	timeSpent: [],
+	review: '',
+}
+
+function Form({
+	handleCheckboxChange,
+	handleSubmit,
+	answerInputs,
+	handleChange,
+	// answersList,
+}) {
 	return (
 		<form className="form" onSubmit={handleSubmit}>
 			<h2>Tell us what you think about your rubber duck!</h2>
@@ -9,11 +27,9 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 				<input
 					type="text"
 					name="username"
-					value={formInputs.username}
+					value={answerInputs.username}
 					required
-					onChange={e =>
-						setFormInputs({ ...formInputs, username: e.target.value })
-					}
+					onChange={handleChange}
 				/>
 			</label>
 
@@ -23,11 +39,9 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 				<input
 					type="email"
 					name="email"
-					value={formInputs.email}
+					value={answerInputs.email}
 					required
-					onChange={e =>
-						setFormInputs({ ...formInputs, email: e.target.value })
-					}
+					onChange={handleChange}
 				/>
 			</label>
 
@@ -43,9 +57,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="bestFeatures"
 								type="checkbox"
 								value="colour"
-								// we need to know which one is checked
-								checked={formInputs.bestFeatures === 'colour' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.bestFeatures.includes('colour')}
+								onChange={handleCheckboxChange}
 							/>
 							It's yellow!
 						</label>
@@ -56,8 +69,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="bestFeatures"
 								type="checkbox"
 								value="sound"
-								checked={formInputs.bestFeatures === 'sound' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.bestFeatures.includes('sound')}
+								onChange={handleCheckboxChange}
 							/>
 							It squeaks!
 						</label>
@@ -68,8 +81,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="bestFeatures"
 								type="checkbox"
 								value="logo"
-								checked={formInputs.bestFeatures === 'logo' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.bestFeatures.includes('logo')}
+								onChange={handleCheckboxChange}
 							/>
 							It has a logo!
 						</label>
@@ -80,8 +93,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="bestFeatures"
 								type="checkbox"
 								value="size"
-								checked={formInputs.bestFeatures === 'size' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.bestFeatures.includes('size')}
+								onChange={handleCheckboxChange}
 							/>
 							Its big!
 						</label>
@@ -100,8 +113,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								type="checkbox"
 								value="colour"
 								// we need to know which one is checked
-								checked={formInputs.worstFeatures === 'colour' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.worstFeatures.includes('colour')}
+								onChange={handleCheckboxChange}
 							/>
 							It's yellow!
 						</label>
@@ -112,8 +125,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="worstFeatures"
 								type="checkbox"
 								value="sound"
-								checked={formInputs.worstFeatures === 'sound' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.worstFeatures.includes('sound')}
+								onChange={handleCheckboxChange}
 							/>
 							It squeaks!
 						</label>
@@ -124,8 +137,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="worstFeatures"
 								type="checkbox"
 								value="logo"
-								checked={formInputs.worstFeatures === 'logo' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.worstFeatures.includes('logo')}
+								onChange={handleCheckboxChange}
 							/>
 							It has a logo!
 						</label>
@@ -136,8 +149,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="worstFeatures"
 								type="checkbox"
 								value="size"
-								checked={formInputs.worstFeatures === 'size' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.worstFeatures.includes('size')}
+								onChange={handleCheckboxChange}
 							/>
 							Its big!
 						</label>
@@ -156,10 +169,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							name="consistency"
 							value="1"
 							// we need to know which one is checked
-							checked={formInputs.consistency === '1' ? true : false}
+							checked={answerInputs.consistency === '1'}
 							onChange={handleChange}
 						/>
-						<label html="consistency1">1</label>
+						<label htmlFor="consistency1">1</label>
 					</li>
 					<li>
 						<input
@@ -167,10 +180,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="consistency"
 							value="2"
-							checked={formInputs.consistency === '2' ? true : false}
+							checked={answerInputs.consistency === '2'}
 							onChange={handleChange}
 						/>
-						<label html="consistency2">2</label>
+						<label htmlFor="consistency2">2</label>
 					</li>
 					<li>
 						<input
@@ -178,10 +191,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="consistency"
 							value="3"
-							checked={formInputs.consistency === '3' ? true : false}
+							checked={answerInputs.consistency === '3'}
 							onChange={handleChange}
 						/>
-						<label html="consistency3">3</label>
+						<label htmlFor="consistency3">3</label>
 					</li>
 					<li>
 						<input
@@ -189,10 +202,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="consistency"
 							value="4"
-							checked={formInputs.consistency === '4' ? true : false}
+							checked={answerInputs.consistency === '4'}
 							onChange={handleChange}
 						/>
-						<label html="consistency4">4</label>
+						<label htmlFor="consistency4">4</label>
 					</li>
 				</ul>
 			</div>
@@ -208,10 +221,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							name="colour"
 							value="1"
 							// we need to know which one is checked
-							checked={formInputs.colour === '1' ? true : false}
+							checked={answerInputs.colour === '1'}
 							onChange={handleChange}
 						/>
-						<label html="colour1">1</label>
+						<label htmlFor="colour1">1</label>
 					</li>
 					<li>
 						<input
@@ -219,10 +232,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="colour"
 							value="2"
-							checked={formInputs.colour === '2' ? true : false}
+							checked={answerInputs.colour === '2'}
 							onChange={handleChange}
 						/>
-						<label html="colour2">2</label>
+						<label htmlFor="colour2">2</label>
 					</li>
 					<li>
 						<input
@@ -230,10 +243,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="colour"
 							value="3"
-							checked={formInputs.colour === '3' ? true : false}
+							checked={answerInputs.colour === '3'}
 							onChange={handleChange}
 						/>
-						<label html="colour3">3</label>
+						<label htmlFor="colour3">3</label>
 					</li>
 					<li>
 						<input
@@ -241,10 +254,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="colour"
 							value="4"
-							checked={formInputs.colour === '4' ? true : false}
+							checked={answerInputs.colour === '4'}
 							onChange={handleChange}
 						/>
-						<label html="colour4">4</label>
+						<label htmlFor="colour4">4</label>
 					</li>
 				</ul>
 			</div>
@@ -260,11 +273,11 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							name="logo"
 							value="1"
 							// we need to know which one is checked
-							checked={formInputs.logo === '1' ? true : false}
+							checked={answerInputs.logo === '1'}
 							required
 							onChange={handleChange}
 						/>
-						<label html="logo1">1</label>
+						<label htmlFor="logo1">1</label>
 					</li>
 					<li>
 						<input
@@ -272,10 +285,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="logo"
 							value="2"
-							checked={formInputs.logo === '2' ? true : false}
+							checked={answerInputs.logo === '2'}
 							onChange={handleChange}
 						/>
-						<label html="logo2">2</label>
+						<label htmlFor="logo2">2</label>
 					</li>
 					<li>
 						<input
@@ -283,10 +296,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="logo"
 							value="3"
-							checked={formInputs.logo === '3' ? true : false}
+							checked={answerInputs.logo === '3'}
 							onChange={handleChange}
 						/>
-						<label html="logo3">3</label>
+						<label htmlFor="logo3">3</label>
 					</li>
 					<li>
 						<input
@@ -294,10 +307,10 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 							type="radio"
 							name="logo"
 							value="4"
-							checked={formInputs.logo === '4' ? true : false}
+							checked={answerInputs.logo === '4'}
 							onChange={handleChange}
 						/>
-						<label html="logo4">4</label>
+						<label htmlFor="logo4">4</label>
 					</li>
 				</ul>
 			</div>
@@ -313,8 +326,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								type="checkbox"
 								value="swimming"
 								// we need to know which one is checked
-								checked={formInputs.timeSpent === 'swimming' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.timeSpent.includes('swimming')}
+								onChange={handleCheckboxChange}
 							/>
 							Swimming
 						</label>
@@ -325,8 +338,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="timeSpent"
 								type="checkbox"
 								value="bathing"
-								checked={formInputs.timeSpent === 'bathing' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.timeSpent.includes('bathing')}
+								onChange={handleCheckboxChange}
 							/>
 							Bathing
 						</label>
@@ -337,8 +350,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="timeSpent"
 								type="checkbox"
 								value="chatting"
-								checked={formInputs.timeSpent === 'chatting' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.timeSpent.includes('chatting')}
+								onChange={handleCheckboxChange}
 							/>
 							Chatting
 						</label>
@@ -349,8 +362,8 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 								name="timeSpent"
 								type="checkbox"
 								value="noTime"
-								checked={formInputs.timeSpent === 'noTime' ? true : false}
-								onChange={handleChange}
+								checked={answerInputs.timeSpent.includes('noTime')}
+								onChange={handleCheckboxChange}
 							/>
 							I don't like to spend time with it
 						</label>
@@ -365,7 +378,7 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 					name="review"
 					cols="30"
 					rows="10"
-					value={formInputs.review}
+					value={answerInputs.review}
 					onChange={handleChange}></textarea>
 			</label>
 
@@ -374,7 +387,7 @@ function FormList({ setFormInputs, handleSubmit, formInputs, handleChange }) {
 	)
 }
 
-export default FormList
+export default Form
 
 {
 	/* FORM ▶ STATE ▶ handleChange = {...inputs, e.t.name = e.t.value } */

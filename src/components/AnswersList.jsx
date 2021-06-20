@@ -3,8 +3,8 @@ import AnswersItem from './AnswersItem'
 function AnswersList({ answersList }) {
 	return (
 		<ul>
-			{answersList.map((answerItem, i) => (
-				<AnswersItem answerItem={answerItem} key={i} />
+			{answersList.map((answerItem, index) => (
+				<AnswersItem answerItem={answerItem} index={index} />
 			))}
 		</ul>
 	)
